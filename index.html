@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>I Am a Potato</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #222;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    #potato {
+      display: none;
+      margin-top: 30px;
+    }
+    img {
+      width: 250px;
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>💻 Hello User...</h1>
+  <p id="message">Please wait, the system is loading...</p>
+
+  <div id="potato">
+    <h1>🥔 I identify myself as a potato 🥔</h1>
+    <img src="https://media.tenor.com/6RBB5jM90WIAAAAi/potato-dance.gif" alt="Spinning Potato">
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("message").style.display = "none";
+      document.getElementById("potato").style.display = "block";
+    }, 3000); // after 3 seconds, reveal potato
+  </script>
+</body>
+</html>
