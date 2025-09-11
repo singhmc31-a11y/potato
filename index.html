@@ -4,40 +4,73 @@
   <title>I Am a Potato</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
       background-color: #222;
       color: #fff;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 50px;
+      overflow: hidden; /* no scrollbars */
     }
     h1 {
       font-size: 2em;
       margin-bottom: 20px;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
     }
     #potato {
       display: none;
       margin-top: 30px;
     }
     img {
-      width: 250px;
+      width: 300px;
+      max-width: 90%;
     }
   </style>
 </head>
 <body>
-  <h1>💻 Hello User...</h1>
-  <p id="message">Please wait, the system is loading...</p>
+  <div id="container">
+    <h1>💻 Hello User...</h1>
+    <p id="message">Please wait, the system is loading...</p>
 
-  <div id="potato">
-    <h1>🥔 I identify myself as a potato 🥔</h1>
-    <img src="https://media.giphy.com/media/l46Coblu8EE8Z8QYo/giphy.gif" alt="Potato Levitating">
+    <div id="potato">
+      <h1>🥔 I identify myself as a potato 🥔</h1>
+      <img src="https://media.giphy.com/media/l46Coblu8EE8Z8QYo/giphy.gif" alt="Potato Levitating">
+    </div>
   </div>
 
   <script>
+    function goFullScreen() {
+      let elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { // Safari
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { // IE/Edge
+        elem.msRequestFullscreen();
+      }
+    }
+
     setTimeout(() => {
       document.getElementById("message").style.display = "none";
       document.getElementById("potato").style.display = "block";
-    }, 3000); // after 3 seconds, reveal potato
+
+      // trigger fullscreen
+      goFullScreen();
+
+      // loop alert forever until the tab/app is closed
+      setInterval(() => {
+        alert("🥔 Reminder: I am still a potato!");
+      }, 5000);
+    }, 3000);
   </script>
 </body>
 </html>
